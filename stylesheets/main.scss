@@ -1,0 +1,266 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Ropa Sans', sans-serif;
+  background-color: $purple;
+}
+
+.page-container {
+  max-width: 1200px;
+  background-color: rgb(255, 255, 255);
+  margin: 0 auto;
+  min-height: 100vh;
+
+  //  ---------------------------------------------------//
+  //  -----------------   Header/Hero
+  //  ---------------------------------------------------//
+
+  header {
+    $arrow-time: 9s;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    // .left,
+    // .right {
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   width: 50%;
+    //   z-index: 0;
+    // }
+    // .left {
+    //   left: 0;
+    // }
+    // .right {
+    //   right: 0;
+    // }
+    nav {
+      // background-color: $;
+      font-size: 1.3em;
+
+      position: absolute;
+      width: 100%;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 2em;
+      .logo {
+        opacity: 0;
+        animation: rhs-slide-in 0.7s forwards $arrow-time + 1s;
+      }
+      ul {
+        width: 40%;
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        opacity: 0;
+        height: 100%;
+        animation: lhs-slide-in 0.7s forwards $arrow-time + 1s;
+
+        li {
+          text-align: center;
+          height: 100%;
+          a {
+            display: block;
+            padding: 0.3em 0.4em;
+            text-decoration: none;
+            color: inherit;
+          }
+        }
+      }
+    }
+    .text-container {
+      display: block;
+      font-size: 2.4rem;
+      text-align: center;
+      z-index: 1;
+      color: inherit;
+      text-decoration: none;
+
+      h1,
+      h2 {
+        opacity: 0;
+        font-weight: 200;
+        display: block;
+        width: 100%;
+        animation: fade-in 0.3s ease forwards;
+
+        @for $i from 1 through 6 {
+          &:nth-child(#{$i}) {
+            animation-delay: #{$i * 1}s;
+          }
+        }
+        @for $i from 7 through 11 {
+          &:nth-child(#{$i}) {
+            animation-delay: #{5 + $i * 0.3}s;
+          }
+        }
+      }
+      h1 {
+        font-size: 1em;
+      }
+      h2 {
+        font-size: 0.8em;
+      }
+      animation: arrowflip 1.4s ease forwards;
+      animation-delay: $arrow-time;
+    }
+    .point {
+      animation: point 1s infinite ease-in-out alternate;
+      animation-delay: $arrow-time + 1.4s;
+    }
+    .flip-back {
+      display: inline-block;
+      animation: flip-back 0s forwards ease $arrow-time + 0.3s;
+    }
+  }
+}
+
+//  ---------------------------------------------------//
+//  -----------------   Navigation
+//  ---------------------------------------------------//
+
+//  ---------------------------------------------------//
+//  -----------------   Sections
+//  ---------------------------------------------------//
+
+section {
+  min-height: 100vh;
+  margin: 3rem auto;
+  padding: 2rem;
+
+  //   background-color:opacify($color: $yellow, $amount: 0.9);
+  background-color: transparentize($color: $yellow, $amount: 0.5);
+}
+
+//  ---------------------------------------------------//
+//  -----------------   Projects
+//  ---------------------------------------------------//
+
+#projects {
+}
+
+//  ---------------------------------------------------//
+//  -----------------   About
+//  ---------------------------------------------------//
+
+#about {
+}
+
+//  ---------------------------------------------------//
+//  -----------------   Contact
+//  ---------------------------------------------------//
+
+#contact {
+}
+
+//  ---------------------------------------------------//
+//  -----------------   Footer
+//  ---------------------------------------------------//
+
+footer {
+  text-align: right;
+  padding: 1.2em;
+}
+
+//  ---------------------------------------------------//
+//  -----------------   Animation
+//  ---------------------------------------------------//
+
+@keyframes bg {
+  from {
+    background-position: left;
+  }
+  to {
+    background-position: right;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes arrowflip {
+  from {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(180deg);
+    opacity: 0.35;
+  }
+}
+
+// @keyframes arrowflip {
+//     from {
+//       transform: rotate(0deg) scale(1) translateY(0);
+//       opacity: 1;
+//     }
+//     to {
+//       transform: rotate(180deg) scale(0.6) translateY(-60%);
+//       opacity: 0.35;
+//     }
+//   }
+
+@keyframes flip-back {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+    color: red;
+  }
+}
+@keyframes point {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(2rem);
+  }
+}
+@keyframes lhs-slide-in {
+  from {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes rhs-slide-in {
+  from {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
