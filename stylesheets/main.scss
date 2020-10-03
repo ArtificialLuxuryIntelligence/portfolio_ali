@@ -2,87 +2,132 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
   &::selection {
     background: $pink;
   }
 }
 
 $MAX-WIDTH: 1066px;
+$arrow-time: 8.5s;
 
-@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Ropa+Sans&display=swap');
 html {
   scroll-behavior: smooth;
 }
 body {
   font-family: 'Ropa Sans', sans-serif;
-  background-color: $yellow;
+  // font-family: 'Poppins', sans-serif;
+
+  font-weight: 300;
+  // background-color: $yellow;
   background-image: linear-gradient(0deg, $purple, $pink);
+  h1,
+  h2,
+  h3,
+  h4,
+  a {
+    font-family: 'Ropa Sans', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.02em;
+  }
 }
 p {
-  line-height: 1.25;
+  line-height: 1.15;
 }
 em {
   font-style: italic;
 }
 
 .page-container {
+  position: relative;
   max-width: $MAX-WIDTH;
-  background-color: rgb(255, 255, 255);
+  background-color: $white;
   margin: 0 auto;
   padding: 0 4rem;
   min-height: 100vh;
+
+  //  ---------------------------------------------------//
+  //  -----------------   Navigation
+  //  ---------------------------------------------------//
+
+  .nav-active {
+    .logo {
+      animation: rhs-slide-in 0.7s forwards;
+    }
+    ul {
+      animation: lhs-slide-in 0.7s forwards;
+    }
+  }
+  nav {
+    // background-color: $;
+    font-size: 1.3em;
+    // position: absolute;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: $MAX-WIDTH;
+    margin: 0 auto;
+    padding: 0.4em 0.5em;
+    display: flex;
+    justify-content: space-between;
+    // padding: 2em 2em;
+    background-color: $purple;
+    .logo {
+      opacity: 0;
+      color: $white;
+    }
+    ul {
+      width: 40%;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      opacity: 0;
+      height: 100%;
+
+      li {
+        text-align: center;
+        height: 100%;
+        a {
+          display: block;
+          padding: 0.3em 0.4em;
+          text-decoration: none;
+          color: $white;
+
+          transform: all 1s ease;
+
+          &:hover {
+            transform: all 1s ease;
+
+          }
+        }
+      }
+    }
+  }
 
   //  ---------------------------------------------------//
   //  -----------------   Header/Hero
   //  ---------------------------------------------------//
 
   > header {
+    position: relative;
+
     overflow: hidden;
-    $arrow-time: 8.5s;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
+    // background-image: radial-gradient(
+    //   circle,
+    //   $pink,
+    //   $purple 60%,
+    //   transparent 80%
+    // );
 
-    nav {
-      // background-color: $;
-      font-size: 1.3em;
-      position: absolute;
-      width: 100%;
-      max-width: $MAX-WIDTH;
-      margin: 0 auto;
-      padding: 1.2rem 2rem;
-      top: 0;
-      display: flex;
-      justify-content: space-between;
-      // padding: 2em 2em;
-      .logo {
-        opacity: 0;
-        animation: rhs-slide-in 0.7s forwards $arrow-time + 1s;
-      }
-      ul {
-        width: 40%;
-        list-style: none;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        opacity: 0;
-        height: 100%;
-        animation: lhs-slide-in 0.7s forwards $arrow-time + 1s;
-
-        li {
-          text-align: center;
-          height: 100%;
-          a {
-            display: block;
-            padding: 0.3em 0.4em;
-            text-decoration: none;
-            color: inherit;
-          }
-        }
-      }
-    }
     .title-text {
       display: flex;
       position: absolute;
@@ -93,7 +138,7 @@ em {
       align-items: center;
 
       opacity: 0;
-      animation: fade-in 0.6s ease forwards $arrow-time + 2s;
+      animation: fade-in 0.6s ease forwards $arrow-time + 1s;
       font-size: 3.4rem;
 
       h1,
@@ -105,7 +150,7 @@ em {
       }
       h1 {
         text-align: right;
-        color: darken($color: $purple, $amount: 10);
+        color: $purple-dark;
         font-size: 1em;
       }
       h2 {
@@ -181,11 +226,17 @@ em {
 
 .content {
   h1 {
-    color: darken($color: $purple, $amount: 20);
+    color: $purple-dark;
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }
   section {
+    &:target::before {
+      content: '';
+      display: block;
+      height: 5rem; // fixed header height -// stops nav from hiding content
+      margin: -5rem 0 0; // negative fixed header height
+    }
     min-height: 100vh;
     margin: 0rem auto;
     // padding: 2rem;
@@ -214,43 +265,46 @@ em {
     // padding: 1.2em 1em;
 
     header {
-      height: 20rem;
+      height: 25rem;
+      width: 100%;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      background: radial-gradient(circle, white, hsla(0, 0%, 0%, 0.096));
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // flex-direction: column;
+      background: radial-gradient(circle, rgb(255, 255, 255), hsl(0, 0%, 88%));
       background-clip: content-box;
+
       padding: 0 3rem;
       // border-radius: 50%;
 
       h1 {
-        color: darken($color: $purple, $amount: 20);
+        color: $purple-dark;
         font-size: 2.2rem;
         position: absolute;
         top: 0.9em;
         left: 0.2em;
       }
       img {
-        // position: absolute;
+        position: absolute;
         // bottom: 20%;
         // right: 50%;
-        margin-top: 2.9em;
+        // margin-top: 2.9em;
         // position: absolute;
-        bottom: 1.2em;
-        right: 3em;
+        // bottom: 1.2em;
+        left: 24%;
+        top: 30%;
 
-        width: 70%;
+        width: 58%;
         // height: 40%;
-        object-fit: contain;
+        // object-fit: contain;
       }
     }
     .details {
       h2 {
-        color: darken($color: $pink, $amount: 20);
+        color: $pink-dark;
 
-        font-size: 1.6em;
+        font-size: 1.7em;
         margin-bottom: 1em;
       }
       p {
@@ -281,4 +335,38 @@ em {
 footer {
   text-align: right;
   padding: 1.2em;
+  background-color: $yellow;
+}
+
+//  ---------------------------------------------------//
+//  -----------------   Buttons
+//  ---------------------------------------------------//
+
+.project-buttons {
+  margin-top: 0.8em;
+  width: 100%;
+  text-align: center;
+
+  // display: none;
+  button {
+    margin-left: 0.4em;
+  }
+}
+button,
+#submit {
+  cursor: pointer;
+  font-weight: 400;
+  display: inline-block;
+  padding: 0.4em 0.6em;
+  border-radius: 6px;
+  color: $purple-dark;
+  background-color: $white;
+  border: 0.5px solid $purple-dark;
+  transition: all 0.1s;
+
+  &:hover {
+    color: $white;
+    background-color: $pink-dark;
+    border: 0.5px solid $pink-dark;
+  }
 }
