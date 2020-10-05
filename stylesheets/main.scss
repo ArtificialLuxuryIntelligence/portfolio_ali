@@ -401,7 +401,7 @@ em {
         // font-size: 1.1em;
       }
       .project-buttons {
-        margin-top: 2em;
+        margin: 2.4em 0;
       }
     }
   }
@@ -536,12 +536,13 @@ footer {
   }
 }
 button,
-#submit {
+#submit,
+.external_link {
   cursor: pointer;
   font-size: 0.9em;
   font-weight: 400;
   display: inline-block;
-  padding: 0.5em 1.2em;
+  padding: 0.5em 1.1em;
   border-radius: 6px;
 
   transition: all 0.1s;
@@ -555,4 +556,7 @@ button,
     background-color: $white;
     border: 0.5px solid $purple-dark;
   }
+}
+.external_link {
+  margin: 0 0.6em;
 }
