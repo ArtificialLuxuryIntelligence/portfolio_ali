@@ -82,6 +82,7 @@ em {
   //  ---------------------------------------------------//
 
   nav {
+    transition: all 0.35s ease;
     // background-color: $;
     font-size: 1.3em;
     // position: absolute;
@@ -97,6 +98,7 @@ em {
     padding: 0 0.4em;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     // padding: 2em 2em;
     background-color: $purple;
     background: linear-gradient($purple, lighten($purple, 5));
@@ -105,7 +107,7 @@ em {
       color: $white;
     }
     ul {
-      width: 40%;
+      width: 30%;
       list-style: none;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -129,9 +131,13 @@ em {
         }
       }
     }
+    #nav-toggle {
+      display: none;
+    }
   }
 
   .nav-active {
+    box-shadow: 0 2px 3px darken($color: $purple, $amount: 50);
     .logo {
       animation: rhs-slide-in 0.7s forwards;
     }

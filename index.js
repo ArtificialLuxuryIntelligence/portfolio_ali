@@ -3,9 +3,10 @@ import './styles.scss';
 //Delay for hero animation
 const arrowTime = 6000;
 
-let nav = document.querySelector('nav');
+const nav = document.querySelector('nav');
 const hero = document.querySelector('.hero-content');
 const year = document.getElementById('year');
+const toggle = document.getElementById('nav-toggle');
 
 function activateNav() {
   if (nav.classList.contains('nav-active')) {
@@ -35,6 +36,20 @@ function activateNav() {
   }, options);
 
   observer.observe(hero, options);
+
+  //  Toggle mobile nav
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('mobile-nav-open');
+  });
+
+  //close on link click
+  let links = [...document.querySelectorAll('a')];
+  links.forEach((link) =>
+    link.addEventListener('click', () => {
+      nav.classList.remove('mobile-nav-open');
+    })
+  );
 
   //floating labels in form
 
