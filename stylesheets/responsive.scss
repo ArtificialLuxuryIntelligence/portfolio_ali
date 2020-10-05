@@ -46,7 +46,11 @@
         .details {
           grid-column: 1 / span 1;
           grid-row: 3 / span 1;
+          margin-top: 3em;
           //   padding: 1re`m 4rem;
+          .project-buttons {
+            margin-top: 3em;
+          }
         }
       }
     }
@@ -74,6 +78,11 @@
     //  ---------------------------------------------------//
     //  -----------------   Contact
     //  ---------------------------------------------------//
+    #contact {
+      .contact-contents {
+        padding: 1em 4rem;
+      }
+    }
   }
 }
 
