@@ -1,0 +1,109 @@
+// Desktop first (probably the most viewed format)
+
+@media only screen and (max-width: 980px) {
+  .page-container {
+    //  ---------------------------------------------------//
+    //  -----------------   Navigation
+    //  ---------------------------------------------------//
+
+    .nav-active {
+      display: none;
+    }
+    nav {
+      //   display: none;
+    }
+
+    //  ---------------------------------------------------//
+    //  -----------------   Header/Hero
+    //  ---------------------------------------------------//
+
+    > header {
+      font-size: 0.8rem;
+      .title-text {
+        width: 20ch;
+      }
+    }
+    //  ---------------------------------------------------//
+    //  -----------------   Sections
+    //  ---------------------------------------------------//
+
+    //  ---------------------------------------------------//
+    //  -----------------   Projects
+    //  ---------------------------------------------------//
+    #projects {
+      .project {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-gap: 0em;
+        .cover {
+          grid-column: 1 / span 1;
+          grid-row: 2 / span 1;
+          padding: 2em 4% 0em 4%;
+        }
+        .details {
+          grid-column: 1 / span 1;
+          grid-row: 3 / span 1;
+          //   padding: 1re`m 4rem;
+        }
+      }
+    }
+
+    //  ---------------------------------------------------//
+    //  -----------------   About
+    //  ---------------------------------------------------//
+
+    #about {
+      .about-contents {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        div {
+          &:nth-last-of-type(1) {
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 1;
+          }
+          &:nth-last-of-type(2) {
+            grid-column: 1 / span 1;
+            grid-row: 2 / span 1;
+          }
+        }
+      }
+    }
+    //  ---------------------------------------------------//
+    //  -----------------   Contact
+    //  ---------------------------------------------------//
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .page-container {
+    //  ---------------------------------------------------//
+    //  -----------------   Navigation
+    //  ---------------------------------------------------//
+
+    .nav-active {
+      display: none;
+    }
+    nav {
+      //   display: none;
+    }
+
+    //  ---------------------------------------------------//
+    //  -----------------   Header/Hero
+    //  ---------------------------------------------------//
+
+    > header {
+      font-size: 0.8rem;
+      .title-text {
+        font-size: 2.2em;
+      }
+    }
+
+    #projects {
+      .project {
+        .details {
+          padding: 1em 2em;
+        }
+      }
+    }
+  }
+}

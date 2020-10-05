@@ -42,7 +42,6 @@ function activateNav() {
     ...document.querySelectorAll('input'),
     ...document.querySelectorAll('textarea'),
   ];
-  console.log(inputs);
   inputs.forEach((input) => {
     let label = input.nextElementSibling;
     input.addEventListener('input', (e) => {
