@@ -141,7 +141,8 @@ em {
     .logo {
       animation: rhs-slide-in 0.7s forwards;
     }
-    ul {
+    ul,
+    span {
       animation: lhs-slide-in 0.7s forwards;
     }
   }
