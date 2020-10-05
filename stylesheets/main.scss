@@ -8,35 +8,63 @@
   }
 }
 
-$MAX-WIDTH: 1066px;
-$arrow-time: 8.5s;
+$MAX-WIDTH: 1280px;
+$arrow-time: 6.5s;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Ropa+Sans&display=swap');
+@font-face {
+  font-family: 'Yaldevi C Light';
+  src: url('/assets/fonts/YaldeviColombo-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Yaldevi C Medium';
+  src: url('/assets/fonts/YaldeviColombo-Medium.woff') format('woff');
+}
+
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Ropa+Sans&display=swap');
+
 html {
   scroll-behavior: smooth;
 }
 body {
   font-family: 'Ropa Sans', sans-serif;
+  font-family: 'Yaldevi C Light';
+
   // font-family: 'Poppins', sans-serif;
 
   font-weight: 300;
   // background-color: $yellow;
-  background-image: linear-gradient(0deg, $purple, $pink);
+  background-image: linear-gradient(0deg, $purple-light, $pink-light);
   h1,
   h2,
   h3,
   h4,
   a {
     font-family: 'Ropa Sans', sans-serif;
+    font-family: 'Yaldevi C Medium';
+
     font-weight: 200;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
   }
 }
-p {
+p,
+li {
   line-height: 1.15;
+  letter-spacing: 0.02em;
+  font-size: 1.1em;
+}
+li {
+  line-height: 1.55;
+}
+a {
+  text-decoration: none;
+  color: $purple-dark;
 }
 em {
   font-style: italic;
+}
+.purple-text {
+  color: $purple-dark;
 }
 
 .page-container {
@@ -46,6 +74,8 @@ em {
   margin: 0 auto;
   padding: 0 4rem;
   min-height: 100vh;
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
 
   //  ---------------------------------------------------//
   //  -----------------   Navigation
@@ -64,6 +94,7 @@ em {
     font-size: 1.3em;
     // position: absolute;
     z-index: 2;
+    opacity: 0.9;
     position: fixed;
     top: 0;
     left: 50%;
@@ -71,11 +102,12 @@ em {
     width: 100%;
     max-width: $MAX-WIDTH;
     margin: 0 auto;
-    padding: 0.4em 0.5em;
+    padding: 0 0.4em;
     display: flex;
     justify-content: space-between;
     // padding: 2em 2em;
     background-color: $purple;
+    background: linear-gradient($purple, lighten($purple, 5));
     .logo {
       opacity: 0;
       color: $white;
@@ -101,7 +133,6 @@ em {
 
           &:hover {
             transform: all 1s ease;
-
           }
         }
       }
@@ -123,10 +154,10 @@ em {
     height: 100vh;
     // background-image: radial-gradient(
     //   circle,
-    //   $pink,
-    //   $purple 60%,
+    //   transparentize($pink-light, 0.6),
     //   transparent 80%
     // );
+    // background: linear-gradient(0deg, transparent, $purple);
 
     .title-text {
       display: flex;
@@ -186,12 +217,12 @@ em {
 
         @for $i from 1 through 6 {
           &:nth-child(#{$i}) {
-            animation-delay: #{$i * 1}s;
+            animation-delay: #{$i * 0.7}s;
           }
         }
         @for $i from 7 through 11 {
           &:nth-child(#{$i}) {
-            animation-delay: #{5 + ($i * 0.25)}s;
+            animation-delay: #{3 + ($i * 0.25)}s;
           }
         }
       }
@@ -217,10 +248,6 @@ em {
 }
 
 //  ---------------------------------------------------//
-//  -----------------   Navigation
-//  ---------------------------------------------------//
-
-//  ---------------------------------------------------//
 //  -----------------   Sections
 //  ---------------------------------------------------//
 
@@ -231,22 +258,24 @@ em {
     margin-bottom: 2rem;
   }
   section {
-    &:target::before {
-      content: '';
-      display: block;
-      height: 5rem; // fixed header height -// stops nav from hiding content
-      margin: -5rem 0 0; // negative fixed header height
-    }
-    min-height: 100vh;
-    margin: 0rem auto;
-    // padding: 2rem;
+    // margin-top: ;
+    // padding-top: 3rem;
 
-    > div {
-      margin-bottom: 4.4rem;
-    }
+    // min-height: 100vh;
+    margin: 0rem auto;
+    margin-bottom: 4.4rem;
+    // padding: 2rem;
 
     //   background-color:opacify($color: $yellow, $amount: 0.9);
     // background-color: transparentize($color: $yellow, $amount: 0.5);
+
+    // stops nav from hiding content on navigation
+    &:target::before {
+      content: '';
+      display: block;
+      height: 8rem; // fixed header height
+      margin: -8rem 0 0; // negative fixed header height
+    }
   }
 }
 
@@ -256,21 +285,32 @@ em {
 
 #projects {
   .project {
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+    margin: 4.4rem 0;
+    width: 100%;
     display: grid;
-    grid-template-columns: 3fr 2fr;
-    grid-template-rows: auto;
-    grid-gap: 2rem 1rem;
-    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    // grid-template-rows: 6rem auto;
+    grid-gap: 1.4rem 2rem;
+    // place-items: center;
     // background-color: $yellow;
     // padding: 1.2em 1em;
 
+    background: linear-gradient(
+      95.63deg,
+      rgba(255, 255, 255, 0) 4.41%,
+      transparentize($purple, 0.8) 99.41%
+    );
+    border-radius: 25px;
     header {
       height: 25rem;
       width: 100%;
       position: relative;
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       // flex-direction: column;
       background: radial-gradient(circle, rgb(255, 255, 255), hsl(0, 0%, 88%));
       background-clip: content-box;
@@ -284,31 +324,67 @@ em {
         position: absolute;
         top: 0.9em;
         left: 0.2em;
+        // mix-blend-mode: hard-light;
       }
       img {
-        position: absolute;
+        // position: absolute;
+        // left: 24%;
+        // top: 30%;
+        // width: 58%;
+
         // bottom: 20%;
         // right: 50%;
-        // margin-top: 2.9em;
-        // position: absolute;
         // bottom: 1.2em;
-        left: 24%;
-        top: 30%;
 
-        width: 58%;
         // height: 40%;
-        // object-fit: contain;
+        // margin-top: 2.9em;
+        width: 80%;
+        object-fit: contain;
+      }
+    }
+
+    h1 {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 1;
+
+      // width: 100%;
+      font-size: 2.4em;
+      margin: 0;
+    }
+
+    .cover,
+    .details {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .cover {
+      grid-column: 1 / span 1;
+      grid-row: 2 / span 1;
+
+      padding: 1.6rem;
+      img {
+        width: 100%;
       }
     }
     .details {
+      grid-column: 2 / span 1;
+      grid-row: 2 / span 1;
+
+      padding: 1rem 4rem;
+
       h2 {
         color: $pink-dark;
 
         font-size: 1.7em;
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
       }
       p {
-        padding: 0.8em 0;
+        margin: 1.2em 0;
+        // font-size: 1.1em;
+      }
+      .project-buttons {
+        margin-top: 2em;
       }
     }
   }
@@ -319,6 +395,37 @@ em {
 //  ---------------------------------------------------//
 
 #about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // grid-template-rows: 6rem auto;
+  grid-gap: 0rem 2rem;
+  background: linear-gradient(
+    95.63deg,
+    rgba(255, 255, 255, 0) 4.41%,
+    transparentize($purple, 0.8) 99.41%
+  );
+  border-radius: 25px;
+
+  div {
+    padding: 2.4rem 4rem;
+
+    &:nth-last-of-type(1) {
+      grid-column: 1 / span 1;
+      grid-row: 1 / span 1;
+    }
+    &:nth-last-of-type(2) {
+      grid-column: 2 / span 1;
+      grid-row: 1 / span 1;
+    }
+    h2 {
+      font-size: 2rem;
+      color: $pink-dark;
+      margin-bottom: 1em;
+    }
+    p {
+      margin: 1em 0;
+    }
+  }
 }
 
 //  ---------------------------------------------------//
@@ -326,6 +433,63 @@ em {
 //  ---------------------------------------------------//
 
 #contact {
+  // padding: 0 4rem;
+  .form-container {
+    margin: 0 auto;
+    padding-bottom: 3em;
+    max-width: 600px;
+    form {
+      .form-field {
+        position: relative;
+      }
+      label {
+        color: $pink-dark;
+        font-size: 1.5em;
+        // font-weight: 500;
+        left: 0.5em;
+        position: absolute;
+        top: 0.5em;
+        transition: all 0.1s linear;
+      }
+
+      input,
+      textarea {
+        font-family: 'Yaldevi C Light';
+
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid $pink;
+        color: #666;
+        font-size: 1.5em;
+        padding: 1em 0.5em 0.5em;
+        width: 100%;
+      }
+      input {
+        max-width: 200px;
+      }
+      textarea {
+        max-width: 100%;
+        min-width: 100%;
+      }
+
+      input:focus + label,
+      label.show,
+      textarea:focus + label,
+      label.show {
+        border-radius: 4px;
+        color: $purple-dark;
+        font-size: 1em;
+        left: 0.5em;
+        padding: 0 0.15em;
+        top: 0.2em;
+      }
+      #submit {
+        // text-align: end;
+        display: block;
+        margin: 2em 0 2em auto;
+      }
+    }
+  }
 }
 
 //  ---------------------------------------------------//
@@ -355,9 +519,10 @@ footer {
 button,
 #submit {
   cursor: pointer;
+  font-size: 0.9em;
   font-weight: 400;
   display: inline-block;
-  padding: 0.4em 0.6em;
+  padding: 0.5em 1.2em;
   border-radius: 6px;
   color: $purple-dark;
   background-color: $white;
