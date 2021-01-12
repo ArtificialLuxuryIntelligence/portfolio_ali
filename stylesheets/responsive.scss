@@ -7,12 +7,15 @@
     //  ---------------------------------------------------//
 
     .nav-active {
-      //   display: none;
     }
     nav {
-      // display: none;
+      font-size: 1.3em;
+
       ul {
         width: 50%;
+        li {
+          text-align: right;
+        }
       }
     }
 
@@ -133,10 +136,8 @@
     }
 
     .nav-active {
-      //   display: none;
     }
     nav {
-      //   display: none;
     }
 
     //  ---------------------------------------------------//
