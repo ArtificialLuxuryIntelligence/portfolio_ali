@@ -66,8 +66,6 @@ function activateNav() {
     observer2.observe(el);
   });
 
-  // observer2.observe(projects, options2);
-
   //  Toggle mobile nav
 
   toggle.addEventListener('click', () => {
@@ -104,4 +102,24 @@ function activateNav() {
   //  Set current year in footer
 
   // year.innerText = new Date().getFullYear();
+
+  // Hide nav on scroll down
+
+  function hideNavOnScroll() {
+    let prevScrollpos = window.pageYOffset;
+    let wHeight = window.innerHeight;
+    window.onscroll = function () {
+      let currentScrollPos = window.pageYOffset;
+      if (pageYOffset < wHeight) {
+        return;
+      }
+      if (prevScrollpos > currentScrollPos) {
+        document.getElementById('navbar').style.top = '0';
+      } else {
+        document.getElementById('navbar').style.top = '-100px';
+      }
+      prevScrollpos = currentScrollPos;
+    };
+  }
+  hideNavOnScroll();
 })();
