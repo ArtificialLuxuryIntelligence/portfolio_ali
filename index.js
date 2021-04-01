@@ -105,13 +105,22 @@ function activateNav() {
 
   // Hide nav on scroll down
 
+  let logoText = document.querySelector('.logo_text');
+
   function hideNavOnScroll() {
     let prevScrollpos = window.pageYOffset;
     let wHeight = window.innerHeight;
     window.onscroll = function () {
       let currentScrollPos = window.pageYOffset;
       if (pageYOffset < wHeight) {
+        logoText.classList.contains('hidden')
+          ? null
+          : logoText.classList.add('hidden');
         return;
+      } else {
+        logoText.classList.contains('hidden')
+          ? logoText.classList.remove('hidden')
+          : null;
       }
       if (prevScrollpos > currentScrollPos) {
         document.getElementById('navbar').style.top = '0';

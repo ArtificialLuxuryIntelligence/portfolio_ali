@@ -4,7 +4,9 @@
 }
 
 .fadeOut {
-  opacity: 0;
+  animation: fade-out 0.7s ease-in forwards;
+
+  // opacity: 0;
 }
 .fadeIn {
   animation: fade-in 0.7s ease-in forwards;
