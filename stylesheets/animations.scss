@@ -1,35 +1,63 @@
+// Class helpers
+
+.fade {
+}
+
+.fadeOut {
+  opacity: 0;
+}
+.fadeIn {
+  animation: fade-in 0.7s ease-in forwards;
+}
 
 //  ---------------------------------------------------//
 //  -----------------   Animation
 //  ---------------------------------------------------//
 
+@keyframes herocolourfade {
+  from {
+    background-image: radial-gradient(
+      circle,
+      transparent,
+      transparentize($pink-light, 0.1) 100%
+    );
+  }
+  to {
+    background-image: radial-gradient(
+      circle,
+      transparent,
+      transparentize($pink-light, 0.1) 100%
+    );
+  }
+}
+
 @keyframes bg {
-    from {
-      background-position: left;
-    }
-    to {
-      background-position: right;
-    }
+  from {
+    background-position: left;
   }
-  
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  to {
+    background-position: right;
   }
-  
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 //   @keyframes arrowflip {
 //     from {
 //       transform: rotate(0deg);
@@ -40,54 +68,53 @@
 //       opacity: 0.35;
 //     }
 //   }
-  
-  @keyframes arrowflip {
-      from {
-        transform: rotate(0deg) scale(1) translateY(0);
-        opacity: 1;
-      }
-      to {
-        transform: rotate(180deg) scale(0.4) translateY(-75%);
-        //  ;
-        opacity: 0.35;
-      }
-    }
-  
-  @keyframes flip-back {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(180deg);
-      color: $pink-dark;
-    }
+
+@keyframes arrowflip {
+  from {
+    transform: rotate(0deg) scale(1) translateY(0);
+    opacity: 1;
   }
-  @keyframes point {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(2rem);
-    }
+  to {
+    transform: rotate(180deg) scale(0.4) translateY(-75%);
+    //  ;
+    opacity: 0.35;
   }
-  @keyframes lhs-slide-in {
-    from {
-      transform: translateX(100vw);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+}
+
+@keyframes flip-back {
+  from {
+    transform: rotate(0deg);
   }
-  @keyframes rhs-slide-in {
-    from {
-      transform: translateX(-100vw);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  to {
+    transform: rotate(180deg);
+    color: $pink-dark;
   }
-  
+}
+@keyframes point {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(2rem);
+  }
+}
+@keyframes lhs-slide-in {
+  from {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes rhs-slide-in {
+  from {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

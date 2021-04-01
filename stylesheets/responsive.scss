@@ -1,5 +1,7 @@
 // Desktop first (probably the most viewed format)
 
+$nav-height: 3rem;
+
 @media only screen and (max-width: 980px) {
   .page-container {
     //  ---------------------------------------------------//
@@ -108,11 +110,17 @@
         right: 0;
         left: 0;
         grid-template-columns: 1fr;
+        background-color: $purple;
+
 
         li {
+        background-color: $purple;
+
           a {
+          text-align: right;
+
             padding: 2em 1em;
-            background-color: $purple;
+            color: $white;
           }
           &:nth-of-type(3) {
             a {
@@ -123,6 +131,8 @@
         }
       }
       #nav-toggle {
+        color: $purple;
+
         display: block;
       }
       &.mobile-nav-open {
@@ -130,7 +140,7 @@
           height: 100%;
 
           //   display: block;
-          top: 3rem;
+          top: $nav-height;
         }
       }
     }

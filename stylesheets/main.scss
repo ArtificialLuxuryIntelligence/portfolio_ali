@@ -74,8 +74,8 @@ em {
   margin: 0 auto;
   padding: 0 min(3%, 3rem);
   min-height: 100vh;
-  border-bottom-right-radius: 2rem;
-  border-bottom-left-radius: 2rem;
+  // border-bottom-right-radius: 2rem;
+  // border-bottom-left-radius: 2rem;
 
   //  ---------------------------------------------------//
   //  -----------------   Navigation
@@ -100,13 +100,18 @@ em {
     justify-content: space-between;
     align-items: center;
     // padding: 2em 2em;
-    background-color: $purple;
-    background: linear-gradient($purple, lighten($purple, 5));
+    // background-color: $purple;
+    background-color: $white;
+    // background: linear-gradient($purple, lighten($purple, 5));
+    backdrop-filter: blur(50px);
+    // box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+
     .logo {
       opacity: 0;
       color: $white;
     }
     ul {
+      padding: 0.6em 0;
       width: 30%;
       list-style: none;
       display: grid;
@@ -123,7 +128,8 @@ em {
           display: block;
           padding: 0.3em 0.4em;
           text-decoration: none;
-          color: $white;
+          text-align: center;
+          color: $purple;
         }
         &:hover {
           a {
@@ -142,7 +148,7 @@ em {
   }
 
   .nav-active {
-    box-shadow: 0 2px 3px darken($color: $purple, $amount: 50);
+    // box-shadow: 0 2px 3px darken($color: $purple, $amount: 50);
     .logo {
       animation: rhs-slide-in 0.7s forwards;
     }
@@ -160,7 +166,6 @@ em {
 
   > header {
     position: relative;
-
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -169,10 +174,11 @@ em {
     height: 100vh;
     // background-image: radial-gradient(
     //   circle,
-    //   transparentize($pink-light, 0.6),
-    //   transparent 80%
+    //   transparent ,
+    //   transparentize($pink-light, 0.1) 100%
     // );
     // background: linear-gradient(0deg, transparent, $purple);
+    // animation: herocolourfade 1s ease $arrow-time + 1s forwards  ;
 
     .title-text {
       display: flex;
@@ -221,23 +227,37 @@ em {
 
       h1,
       h2 {
-        opacity: 0;
         font-weight: 200;
         display: block;
         width: 100%;
-        animation: fade-in 0.3s ease forwards;
-        &:nth-child(6) {
-          margin-bottom: 0.9em;
-        }
+        > span {
+          opacity: 0;
+          font-weight: 200;
+          display: block;
+          width: 100%;
 
-        @for $i from 1 through 6 {
-          &:nth-child(#{$i}) {
-            animation-delay: #{$i * 0.7}s;
+          animation: fade-in 0.3s ease forwards;
+          &:nth-child(1) {
+            margin-bottom: 1.1em;
           }
-        }
-        @for $i from 7 through 11 {
-          &:nth-child(#{$i}) {
-            animation-delay: #{3 + ($i * 0.25)}s;
+          &:nth-child(2) {
+            font-size: 1.2em;
+            margin-bottom: 0.9em;
+          }
+
+          &:nth-child(12) {
+            margin-bottom: 0.9em;
+          }
+
+          @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+              animation-delay: #{$i * 0.7}s;
+            }
+          }
+          @for $i from 7 through 12 {
+            &:nth-child(#{$i}) {
+              animation-delay: #{3 + ($i * 0.2)}s;
+            }
           }
         }
       }
@@ -248,7 +268,7 @@ em {
       h2 {
         font-size: 0.8em;
       }
-      animation: arrowflip 1.4s ease forwards;
+      animation: arrowflip 1s ease forwards;
       animation-delay: $arrow-time;
     }
     .point {
@@ -286,6 +306,9 @@ em {
     // background-color: transparentize($color: $yellow, $amount: 0.5);
 
     // stops nav from hiding content on navigation
+    &:last-of-type {
+      margin-bottom: 0rem;
+    }
     &:target::before {
       // position: absolute;
       // top: -10rem;
@@ -318,11 +341,11 @@ em {
     // background-color: $yellow;
     // padding: 1.2em 1em;
 
-    background: linear-gradient(
-      95.63deg,
-      rgba(255, 255, 255, 0) 4.41%,
-      transparentize($purple, 0.8) 99.41%
-    );
+    // background: linear-gradient(
+    //   95.63deg,
+    //   rgba(255, 255, 255, 0) 4.41%,
+    //   transparentize($purple, 0.8) 99.41%
+    // );
     border-radius: 25px;
     header {
       height: 25rem;
@@ -374,6 +397,7 @@ em {
 
     .cover,
     .details {
+      // opacity: 0; //intersection ob fade in
       display: flex;
       justify-content: center;
       align-items: center;
@@ -423,11 +447,11 @@ em {
     grid-template-columns: 1fr 1fr;
     // grid-template-rows: 6rem auto;
     grid-gap: 0rem 2rem;
-    background: linear-gradient(
-      95.63deg,
-      rgba(255, 255, 255, 0) 4.41%,
-      transparentize($purple, 0.8) 99.41%
-    );
+    // background: linear-gradient(
+    //   95.63deg,
+    //   rgba(255, 255, 255, 0) 4.41%,
+    //   transparentize($purple, 0.8) 99.41%
+    // );
     border-radius: 25px;
 
     div {
@@ -450,6 +474,25 @@ em {
         margin: 1em 0;
       }
     }
+    .dev-icons {
+      display: flex;
+      justify-content: center;
+      li {
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        padding: 0 1em;
+        i {
+          color: $purple-dark;
+          font-size: 1.4em;
+          padding: 0.4em 1em;
+          // width: 30px;
+        }
+      }
+
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }
 
@@ -469,7 +512,7 @@ em {
       }
       label {
         color: $pink-dark;
-        font-size: 1.5em;
+        font-size: 1.2em;
         // font-weight: 500;
         left: 0.5em;
         position: absolute;

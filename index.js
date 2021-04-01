@@ -24,18 +24,49 @@ function activateNav() {
 
   //  Active nav if page is scrolled down
 
-  let options = {
+  let options1 = {
     root: null,
     rootMargin: '-200px',
     threshold: 0,
   };
-  let observer = new IntersectionObserver((entries, observer) => {
+  let observer1 = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       entry.isIntersecting ? null : activateNav();
     });
-  }, options);
+  }, options1);
 
-  observer.observe(hero, options);
+  observer1.observe(hero, options1);
+
+  //  Fade projects in on scroll
+
+  let options2 = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.7,
+  };
+  let observer2 = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // fade in observed elements that are in view
+        entry.target.classList.contains('fadeIn')
+          ? null
+          : entry.target.classList.add('fadeIn');
+      }
+    });
+  }, options2);
+
+  const fadeEls = [
+    ...document.querySelectorAll('.cover'),
+    ...document.querySelectorAll('.details'),
+    document.querySelector('.about-contents'),
+    document.querySelector('#contact'),
+  ];
+  fadeEls.forEach((el) => {
+    el.style.opacity = 0; //set inital state
+    observer2.observe(el);
+  });
+
+  // observer2.observe(projects, options2);
 
   //  Toggle mobile nav
 
