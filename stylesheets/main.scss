@@ -479,9 +479,9 @@ em {
       // display: none;
       grid-column: 1 / span 1;
       grid-row: 2 / span 1;
-      padding: 1.6rem;
+      padding: 4.6rem;
       background-image: radial-gradient(
-        rgba(128, 128, 128, 0.4),
+        rgba(128, 128, 128, 0.2),
         transparent 70%
       );
       img {
@@ -512,7 +512,7 @@ em {
 
   #colourbrain {
     .cover {
-      padding: 2em 20%;
+      padding: 2em 30%;
     }
   }
 }
@@ -581,6 +581,7 @@ em {
 //  ---------------------------------------------------//
 
 #contact {
+  padding: 1em 4em;
   .contact-contents {
     // margin: 0 auto;
     padding-bottom: 3em;

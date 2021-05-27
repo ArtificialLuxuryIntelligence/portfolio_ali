@@ -42,7 +42,7 @@ function activateNav() {
   let options2 = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.7,
+    threshold: 0.22,
   };
   let observer2 = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
