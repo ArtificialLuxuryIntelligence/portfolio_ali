@@ -683,6 +683,9 @@ button,
   color: $white;
   background-color: $pink-dark;
   border: 0.5px solid $pink-dark;
+  i {
+    margin-left: 0.3em;
+  }
 
   &:hover {
     color: $purple-dark;
